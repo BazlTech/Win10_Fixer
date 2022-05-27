@@ -162,6 +162,7 @@ Function RemoveWinBloat {
         "*ToDos*"
         "*OfficeHub*"
         "*Office.Sway*"
+        "Microsoft.YourPhone"
         )
 
     foreach ($bloat in $winbloatware)
@@ -881,6 +882,31 @@ Function Harden_RDP
     # End of Harden_RDP function
 }
 
+###############################################################
+########         Remove News and Interests            #########
+###############################################################
+
+Function Remove_NewsInterests {
+    Write-Host ""
+    Write-Host "------------------------- Remove News and Interests ----------------------------"
+    Write-Host ""
+    Write-Host "Removing the Microsoft News and Interests..."
+    Write-Host ""
+    Write-Host "--------------------------------------------------------------------------------"
+    Write-Host ""
+    Write-Host "NOTE: Due to recent Windows updates, you may still need to turn off or 'hide' the News and Interests"
+
+    # Set Registry entry to disable News and Interests
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds\FeedRepositoryState' -name 'FeedsNextRefreshIntervalMinutes' -value 60 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds\FeedRepositoryState' -name 'FeedsPrevRefreshIntervalMinutes' -value 60 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds\FeedRepositoryState' -name 'FeedEnabled' -value 0 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds\DSB' -name 'IsDynamicContentAvailable' -value 0 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds\DSB' -name 'IsEnabledByServer' -value 0 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -name 'ShellFeedsTaskbarViewMode' -value 2 -PropertyType 'DWord' -Force >> $NULL
+    New-ItemProperty -path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds' -name 'IsFeedsAvailable' -value 0 -PropertyType 'DWord' -Force >> $NULL
+    Write-Host "News and Interests disabled."
+}
+
 
 #################################################################
 ###############       Pre-Execution Checks       ###############
@@ -899,6 +925,7 @@ $options = @(
     "RemoveXboxBloat"
     "RemoveOneDrive"
     "RemoveCortana"
+    "Remove_NewsInterests"
     "ClearDefaultStartMenu"
     "Harden_SSL"
     "Harden_RDP"
