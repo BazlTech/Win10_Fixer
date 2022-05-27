@@ -25,3 +25,5 @@ The script will prompt if you want it to run each module:
   - Only affects users added after script is run
 
 You'll need to restart your computer when you are finished.
+
+For more details, see: https://cybermainstay.com/windows-10-fixer-script-cleanup-windows-with-powershell/
