@@ -965,4 +965,3 @@ Write-Host "Remeber to set your Execution policy back to RESTRICTED."
 Write-Host "`n"
 Write-Host "All Done.  Your machine is now bloat-free, well, Windows bloat-free anyway.`n"
 Write-Host -ForegroundColor Red '---------- A computer restart may be required to apply all changes. ----------'
-Exit
