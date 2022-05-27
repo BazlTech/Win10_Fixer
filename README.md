@@ -24,3 +24,4 @@ The script will prompt if you want it to run each module:
 - ClearDefaultStartMenu
   - Only affects users added after script is run
 
+You'll need to restart your computer when you are finished.
