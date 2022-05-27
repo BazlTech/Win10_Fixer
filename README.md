@@ -14,13 +14,13 @@ Set-ExecutionPolicy RemoteSigned –Scope Process
 
 The script will prompt if you want it to run each module:
 - RemoveWinBloat
-  - Edit the array variable to add or remove packages to be removed
+  - You should first edit the array variable to add or remove packages to be removed
 - RemoveXboxBloat
 - RemoveOneDrive
 - RemoveCortana
 - Remove_NewsInterests
 - Harden_SSL
-  - Included implementing TLSv1.3 and setting secure cipher suite order
+  - Includes implementing TLSv1.3 and setting secure cipher suite order
 - ClearDefaultStartMenu
   - Only affects users added after script is run
 
