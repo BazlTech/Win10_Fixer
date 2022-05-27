@@ -7,7 +7,7 @@ Thisc script automates bloatware removal, ssl hardening, telemetry/tracking remo
 
 ## Usage
 
-You'll need to run the following each PowerShell session in order to enable the script to run
+You'll need to run the following for each PowerShell session in order to enable the script to run
 ```powershell
 Set-ExecutionPolicy RemoteSigned –Scope Process
 ```
