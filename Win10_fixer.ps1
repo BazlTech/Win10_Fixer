@@ -38,6 +38,13 @@ RemoveOneDrive -- This uninstalls OneDrive and removes it from Explorer Window
 RemoveCortana -- This will remove that annoying Cortana assistant without
                   breaking your search feature
 
+Remove_NewsIntersts -- This adjusts some settings to attempt to remove the News
+                and interests included with some of the latest Win10 updates.
+                Unfortunately, recent updates have made it very difficult for 
+                this script to work.  You may still have to turn it off manually,
+                but this script will set some other registry entries to help lessen
+                the effect this package has on Windows performance.
+
 Harden_SSL -- This sets all of the appropriate settings for SSL/TLS
                 secure communication according to DISA STIGS
 
@@ -46,6 +53,9 @@ ClearDefaultStartMenu -- This clears out the start menu for accounts
 
 #>
 
+
+# First, tell Windows this script must be run with Administrator credentials
+#Requires -RunAsAdministrator
 
 ############################################################
 ############    Remove Windows Bloatware     ############
@@ -912,9 +922,13 @@ Function Remove_NewsInterests {
 ###############       Pre-Execution Checks       ###############
 ################################################################
 
-# Set the Requirement for being run as Administrator
-#Requires -RunAsAdministrator
-
+# Check if PowerShell is being run with Administrator Rights as a backup if "#Requires - RunAdAdministrator" Fails
+$isadmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
+if ( -not $isadmin )
+{
+    Write-Host "This script requires Administrative Permissions."
+    Exit
+}
 
 #################################################################
 ###############    Prompt User for Selection     ###############
@@ -951,3 +965,4 @@ Write-Host "Remeber to set your Execution policy back to RESTRICTED."
 Write-Host "`n"
 Write-Host "All Done.  Your machine is now bloat-free, well, Windows bloat-free anyway.`n"
 Write-Host -ForegroundColor Red '---------- A computer restart may be required to apply all changes. ----------'
+Exit
