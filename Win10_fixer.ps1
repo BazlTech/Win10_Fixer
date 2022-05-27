@@ -2,7 +2,7 @@
 
 .AUTHOR:  Steven Bazzell
 
-.DATE:  02 May 2018
+.DATE:   May 2022
 
 .DESCRIPTION:  This script will uninstall a lot of the unnecessary
                 software and add-ons that come pre-installed with
