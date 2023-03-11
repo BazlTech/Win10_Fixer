@@ -1,6 +1,6 @@
 ﻿<##########      Win10 Unbloat PLUS      #########
 
-.AUTHOR:  Steven Bazzell
+.AUTHOR:  Bazl Tech
 
 .DATE:   May 2022
 
